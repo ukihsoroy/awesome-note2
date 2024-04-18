@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+        <property name="commandInvoker" ref="commandInvoker"/>
+
+        <!--全部流程类型都会进入这个监听器-->
+        <property name="eventListeners">
+            <list>
+                <!--打印流程启动，结束 监听器-->
+<!--                <bean class="org.ko.activiti.event.ProcessEventListener"/>-->
+                <!--自定义流程监听器-->
+<!--                <bean class="org.ko.activiti.event.CustomEventListener"/>-->
+            </list>
+        </property>
+
+        <!--通过类型确认监听器-->
+<!--        <property name="typedEventListeners">-->
+<!--            <map>-->
+<!--                &lt;!&ndash;只监听流程启动这一个事件&ndash;&gt;-->
+<!--                <entry key="PROCESS_STARTED">-->
+<!--                    <list>-->
+<!--                        <bean class="org.ko.activiti.event.ProcessEventListener"/>-->
+<!--                    </list>-->
+<!--                </entry>-->
+<!--            </map>-->
+<!--        </property>-->
+    </bean>
+
+    <bean id="commandInvoker" class="org.ko.activiti.interceptor.MDCCommandInvoker"/>
+
+</beans>

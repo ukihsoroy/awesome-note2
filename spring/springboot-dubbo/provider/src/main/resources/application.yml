@@ -1,0 +1,6 @@
+server:
+  port: 8080  #指定端口号为8080 区分端口
+
+spring:
+  application:
+    name: dubbo-rpc

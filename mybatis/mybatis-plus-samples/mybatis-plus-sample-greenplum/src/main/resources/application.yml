@@ -1,0 +1,12 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://gp-2ze06nb5tczrs8r27o.gpdb.rds.aliyuncs.com:3432/greenplum
+    username: greenplum
+    password: Miao2014
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.quickstart: debug

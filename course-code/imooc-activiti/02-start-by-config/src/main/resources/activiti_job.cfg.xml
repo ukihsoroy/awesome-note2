@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+<!--        <property name="commandInvoker" ref="commandInvoker"/>-->
+        <!--开启 event logging-->
+<!--        <property name="enableDatabaseEventLogging" value="true"/>-->
+        <property name="enableDatabaseEventLogging" value="false"/>
+        <!--打开异步-->
+        <property name="asyncExecutorActivate" value="true"/>
+        <!--自定义线程池，异步执行器-->
+        <property name="asyncExecutor" ref="asyncExecutor"/>
+
+        <!--配置job监听-->
+        <property name="eventListeners">
+            <list>
+                <bean class="org.ko.activiti.event.JobEventListener"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--自定义执行器-->
+    <bean id="asyncExecutor" class="org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor">
+        <!--自定义线程池-->
+        <property name="executorService" ref="executorService"/>
+    </bean>
+
+    <!--自定义线程池-->
+    <bean id="executorService" class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">
+        <!--线程名前缀-->
+        <property name="threadNamePrefix" value="activiti-job-"/>
+
+        <!--核心线程数-->
+        <property name="corePoolSize" value="5"/>
+
+        <!--最大线程数-->
+        <property name="maxPoolSize" value="20"/>
+
+        <!--堵塞队列数量大小-->
+        <property name="queueCapacity" value="100"/>
+
+        <!--拒绝策略-->
+        <property name="rejectedExecutionHandler">
+            <!--jdk默认阻塞拒绝策略，抛出异常-->
+            <bean class="java.util.concurrent.ThreadPoolExecutor$AbortPolicy"/>
+        </property>
+    </bean>
+
+<!--    <bean id="commandInvoker" class="org.ko.activiti.interceptor.MDCCommandInvoker"/>-->
+
+</beans>

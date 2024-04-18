@@ -1,0 +1,13 @@
+## master 数据源配置
+master.datasource:
+  url: jdbc:mysql://localhost:3306/ko_master
+  username: ko
+  password: tiger
+  driverClassName: com.mysql.jdbc.Driver
+
+## mapper.cluster 数据源配置
+cluster.datasource:
+  url: jdbc:mysql://localhost:3306/ko_cluster
+  username: ko
+  password: tiger
+  driverClassName: com.mysql.jdbc.Driver

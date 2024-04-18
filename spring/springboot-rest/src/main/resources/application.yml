@@ -1,0 +1,31 @@
+server:
+  port: 1337
+  servlet:
+    context-path: /rest
+
+spring:
+  application.name: springboot-rest
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: tiger
+    url: jdbc:mysql://111.231.224.68:3306/art-prototype?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+  #jackson时间序列化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis:
+  typeAliasesPackage: org.ko
+  mapperLocations: classpath:mappers/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true #开始下划线转驼峰
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+file.local.root: D://tmp/resources/

@@ -1,0 +1,27 @@
+server:
+  port: 1337
+spring:
+  application:
+    name: data-upload
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: tiger
+    url: jdbc:mysql:///automation?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+    data: classpath:sql/data.sql
+#    initialization-mode: always
+  profiles:
+    active: local
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+automation.datasource:
+  mysql:
+    #url:
+    #port:
+    username: root
+    password: tiger
+#    odps:
+#      accessId:
+#      accessKey:

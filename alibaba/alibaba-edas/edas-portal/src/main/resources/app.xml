@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:hsf="http://www.taobao.com/hsf"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.taobao.com/hsf
+       http://www.taobao.com/hsf/hsf.xsd"
+       default-autowire="byName">
+
+    <hsf:consumer id="edasDemoService" interface="com.alibaba.edas.test.EdasDemoService" group="QINGDAO0525"/>
+
+    <!-- 限流、降级配置 for provider -->
+    <bean id="customEditorConfigurer"
+          class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="com.taobao.csp.sentinel.entrypoint.entrance.HSFSpringProviderBeanRegistrar"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 限流、降级配置 for consumer -->
+    <bean id="traceMethodInterceptor" class="com.taobao.csp.sentinel.entrypoint.proxy.TraceMethodInterceptor"/>
+    <bean id="traceProxyTypeHolder" class="com.taobao.csp.sentinel.entrypoint.ProxyTypeHolder">
+        <property name="beanTypes">
+            <list>
+                <value>com.taobao.hsf.app.spring.util.HSFSpringConsumerBean</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="traceBeanTypeAutoProxyCreator" class="com.taobao.csp.sentinel.entrypoint.BeanTypeAutoProxyCreator">
+        <property name="proxyTypeHolder" ref="traceProxyTypeHolder"/>
+        <property name="interceptorNames">
+            <list>
+                <value>traceMethodInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

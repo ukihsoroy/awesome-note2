@@ -1,0 +1,5 @@
+[OSSConfigration]
+accesskeyid = 您OSS使用的阿里云主账户的AK
+accesskeysecret = 您OSS使用的阿里云主账户的SK
+endpoint = 您OSS的endpoint
+bucket = 您需要上传文件的bucket

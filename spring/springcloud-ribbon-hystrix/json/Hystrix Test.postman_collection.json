@@ -1,0 +1,135 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Hystrix Test",
+		"_postman_id": "f6ec46a3-4d11-2227-6075-3dcc2a158848",
+		"description": "测试Ribbon.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.Check Service",
+			"request": {
+				"url": "localhost:8083/consumer",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"K.O\",\n  \"age\": 18,\n  \"sign\": \"编码半生，愿如老友重逢！\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "1.Add User 1",
+			"request": {
+				"url": "localhost:8083/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"name\": \"K.O\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "2.Add User 2",
+			"request": {
+				"url": "localhost:8083/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Sultan\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "3.Get All User",
+			"request": {
+				"url": "localhost:8083/users",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Art\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "4.Add User 3",
+			"request": {
+				"url": "localhost:8083/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Sultan\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "5.Get All User",
+			"request": {
+				"url": "localhost:8083/users",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Art\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "6.Remove User 1",
+			"request": {
+				"url": "localhost:8083/user/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "7.Get All User",
+			"request": {
+				"url": "localhost:8083/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}

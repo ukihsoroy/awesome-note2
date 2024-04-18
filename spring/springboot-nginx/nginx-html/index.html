@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nginx-index</title>
+    <script src="/lib/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Nginx-html</h1>
+    <script>
+        $.ajax({
+            url: 'http://localhost:3343/rest',
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    </script>
+</body>
+</html>

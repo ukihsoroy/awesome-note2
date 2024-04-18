@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+  mail:
+    host: smtp.qq.com
+    username: 814777765@qq.com
+    password: xutjuauefnyvbcea
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8080  #端口号
+

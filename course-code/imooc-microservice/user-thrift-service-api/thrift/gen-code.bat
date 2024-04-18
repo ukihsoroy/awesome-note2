@@ -1,0 +1,1 @@
+D:\middle\thrift\thrift-0.13.0.exe --gen java -out ../src/main/java user_service.thrift

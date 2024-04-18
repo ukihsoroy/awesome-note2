@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springboot-oauth2
+  datasource:
+    url: jdbc:mysql:///oauth2?useUnicode=true&characterEncoding=gbk&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: tiger
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: DEBUG
+
+---

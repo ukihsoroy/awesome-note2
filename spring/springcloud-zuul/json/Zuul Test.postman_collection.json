@@ -1,0 +1,201 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Zuul Test",
+		"_postman_id": "17bfc533-436b-a0df-01e5-e8a22ff4e3d8",
+		"description": "Zuul Test.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.Add User 1",
+			"request": {
+				"url": {
+					"raw": "localhost:8084/feign/user?accessToken=artist",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"feign",
+						"user"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "artist",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"name\": \"K.O\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "2.Add User 2",
+			"request": {
+				"url": {
+					"raw": "localhost:8084/compute/user?accessToken=artist",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"compute",
+						"user"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "artist",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Sultan\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "3.Get All User",
+			"request": {
+				"url": "localhost:8084/compute/users",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Art\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "4.Add User 3",
+			"request": {
+				"url": {
+					"raw": "localhost:8084/feign/user?accessToken=artist",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"feign",
+						"user"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "artist",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 3,\n  \"name\": \"Sultan\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "5.Get All User",
+			"request": {
+				"url": "localhost:8084/feign/users",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 2,\n  \"name\": \"Art\",\n  \"age\": 27,\n  \"birthday\": \"1991-04-15\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "6.Remove User 1",
+			"request": {
+				"url": {
+					"raw": "localhost:8084/compute/user/1?accessToken=artist",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"compute",
+						"user",
+						"1"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "artist",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "7.Get All User",
+			"request": {
+				"url": "localhost:8084/feign/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}

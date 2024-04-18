@@ -1,0 +1,105 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:app.xml</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>CommonFilter</filter-name>
+        <filter-class>com.taobao.csp.sentinel.entrypoint.entrance.CommonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CommonFilter</filter-name>
+        <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CommonFilter</filter-name>
+        <url-pattern>*.jhtml</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.alibaba.edas.test.portal.StartupListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>echo</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.InvokeEcho</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>now</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.InvokeNow</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendOnsMsg</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.SendOnsMsg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>recvOnsMsg</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.RecvOnsMsg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>insert</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.DrdsInsert</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>delete</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.DrdsDelete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>update</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.DrdsUpdate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>query</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.DrdsQuery</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>invokeSleep</servlet-name>
+        <servlet-class>com.alibaba.edas.test.portal.InvokeSleep</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>echo</servlet-name>
+        <url-pattern>/echo.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>now</servlet-name>
+        <url-pattern>/now.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendOnsMsg</servlet-name>
+        <url-pattern>/send.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>recvOnsMsg</servlet-name>
+        <url-pattern>/recv.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insert</servlet-name>
+        <url-pattern>/insert.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>delete</servlet-name>
+        <url-pattern>/delete.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>update</servlet-name>
+        <url-pattern>/update.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>query</servlet-name>
+        <url-pattern>/query.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>invokeSleep</servlet-name>
+        <url-pattern>/sleep.htm</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

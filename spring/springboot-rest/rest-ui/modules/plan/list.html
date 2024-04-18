@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表页</title>
+    <link rel="stylesheet" href="/node_modules/._element-ui@2.3.2@element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="_plan">
+        <!--查询区域-->
+        <el-form ref="params" :model="params" :inline="true" label-width="80px">
+            <el-row :gutter="20">
+                <el-form-item label="计划编号">
+                    <el-autocomplete
+                            v-model="params.name"
+                            placeholder="请输入计划编号"
+                            :fetch-suggestions="querySearchAsync">
+                    </el-autocomplete>
+                </el-form-item>
+                <el-form-item label="申请部门">
+                    <el-select v-model="params.department" placeholder="请选择活动区域">
+                        <el-option label="全部" value=""></el-option>
+                        <el-option label="区域一" value="shanghai"></el-option>
+                        <el-option label="区域二" value="beijing"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="状态">
+                    <el-select v-model="params.status" placeholder="请选择活动区域">
+                        <el-option label="全部" value=""></el-option>
+                        <el-option label="是" value="1"></el-option>
+                        <el-option label="否" value="0"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-button @click="query" type="primary" icon="el-icon-search">查询</el-button>
+                    <el-button @click="export" icon="el-icon-download">导出EXCEL</el-button>
+                </el-form-item>
+            </el-row>
+            <el-row :gutter="20">
+                <el-form-item label="开始时间">
+                    <el-date-picker
+                            v-model="params.startTime"
+                            type="datetime"
+                            value-format="yyyy-MM-dd HH:mm:ss"
+                            placeholder="选择开始日期">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item label="结束时间">
+                    <el-date-picker
+                            v-model="params.endTime"
+                            type="datetime"
+                            value-format="yyyy-MM-dd HH:mm:ss"
+                            placeholder="选择结束日期">
+                    </el-date-picker>
+                </el-form-item>
+            </el-row>
+        </el-form>
+        <el-button @click="add" type="primary" icon="el-icon-plus">新建计划</el-button>
+        <div style="height: 20px"></div>
+        <!--表格区域-->
+        <template>
+            <el-table :data="rows" border stripe>
+                <el-table-column type="index" label="序号" width="50px"></el-table-column>
+                <el-table-column prop="planCode" label="计划编码"></el-table-column>
+                <el-table-column prop="planName" label="计划名称"></el-table-column>
+                <el-table-column prop="submitUser" label="提交人"></el-table-column>
+                <el-table-column prop="submitDt" label="提交时间"></el-table-column>
+                <el-table-column prop="planStatus" label="计划状态"></el-table-column>
+                <el-table-column prop="deleteI" label="逻辑删除"></el-table-column>
+                <el-table-column prop="versionN" label="版本号"></el-table-column>
+                <el-table-column prop="createUserId" label="创建人"></el-table-column>
+                <el-table-column prop="createDt" label="创建时间"></el-table-column>
+                <el-table-column prop="modifyUserId" label="更新人"></el-table-column>
+                <el-table-column prop="modifyDt" label="更新时间"></el-table-column>
+                <el-table-column label="操作" width="220px">
+                    <template slot-scope="scope">
+                        <el-button size="mini" @click="edit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button size="mini" @click="detail(scope.$index, scope.row)">详情</el-button>
+                        <el-button size="mini" type="danger" @click="remove(scope.$index, scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </template>
+        <div style="height: 20px"></div>
+        <!--分页区域-->
+        <template>
+            <div style="text-align:center">
+                <el-pagination
+                        background
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="params.page"
+                        :page-sizes="[10, 20, 30, 40, 50]"
+                        :page-size="10"
+                        layout="total, sizes, prev, pager, next, jumper" :total="count">
+                </el-pagination>
+            </div>
+        </template>
+    </div>
+    <script src="/lib/vue.min.js"></script>
+    <script src="/lib/vue-resource.min.js"></script>
+    <script src="/node_modules/._element-ui@2.3.2@element-ui/lib/index.js"></script>
+    <script src="/js/plan/list.js"></script>
+</body>
+</html>

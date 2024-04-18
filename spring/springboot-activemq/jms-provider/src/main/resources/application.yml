@@ -1,0 +1,11 @@
+server:
+  port: 8081  #应用端口号
+
+spring:
+  application:
+    name: jms-provider #应用名称
+  activemq:
+    broker-url: tcp://localhost:61616
+    in-memory: true
+    pool:
+      enabled: false

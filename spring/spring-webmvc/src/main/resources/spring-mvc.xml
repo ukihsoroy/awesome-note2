@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置处理器映射器 将bean的name作为url进行查找，需要在配置Handler时指定bean name 为url-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+    <!-- 配置视图解析器, 渲染页面-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--为返回的视图名称添加前缀-->
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <!--为返回的视图名称添加后缀-->
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!-- 配置适配器-->
+    <bean class="org.ko.mvc.adapter.ControllerHandlerAdapter"/>
+
+    <!-- 配置Controller-->
+    <bean name="/hello.action" class="org.ko.mvc.controller.HelloController"/>
+
+</beans>

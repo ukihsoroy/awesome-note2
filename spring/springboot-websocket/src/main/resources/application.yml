@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+  thymeleaf:
+    cache: true                     # 模版是否缓存.
+    check-template-location: true   # 检查模板位置是否存在.
+    content-type: text/html         # 页面类型.
+    enabled: true                   # 启用MVC Thymeleaf视图.
+    encoding: UTF-8                 # 模板编码.
+    excluded-view-names:            # 被排除的视图名称, 逗号分割.
+    mode: HTML5                     # 使用的模版类型, @See StandardTemplateModeHandlers.
+    prefix: classpath:/templates/   # 构建URL时, 前缀.
+    suffix: .html                   # 构建URL时, 后缀.
+    template-resolver-order:        # 配置多个视图解析器时执行顺序.
+    view-names: index               # 可以解析的视图名称, 逗号分隔.

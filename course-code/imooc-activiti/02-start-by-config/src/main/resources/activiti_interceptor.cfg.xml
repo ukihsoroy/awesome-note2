@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+        <property name="commandInvoker" ref="commandInvoker"/>
+        <property name="enableDatabaseEventLogging" value="false"/>
+        <property name="enableVerboseExecutionTreeLogging" value="true"/>
+        <property name="customPreCommandInterceptors">
+            <list>
+                <!--时长拦截器-->
+                <bean class="org.ko.activiti.interceptor.DurationCommandInterceptor"/>
+            </list>
+        </property>
+        <property name="customPostCommandInterceptors">
+            <list>
+                <!--时长拦截器-->
+                <bean class="org.ko.activiti.interceptor.DurationCommandInterceptor"/>
+            </list>
+        </property>
+
+        <!--下面这个配置属性是这些command配置的集合，是最后组装成的，我们配置的时候不要动它，否则我们的程序可能会执行不了-->
+<!--        <property name="commandInterceptors"/>-->
+    </bean>
+
+    <bean id="commandInvoker" class="org.ko.activiti.interceptor.MDCCommandInvoker"/>
+
+</beans>

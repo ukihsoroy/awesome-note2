@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--1. properties mybatis 配置的属性 通过方法参数传递的属性具有最高优先级, resource/url 属性中指定的配置文件次之, 最低优先级的是 properties 属性中指定的属性-->
+    <!--可以使用三元运算符等-->
+    <properties resource="properties/config.properties"/>
+
+    <!--2. settings MyBatis 中极为重要的调整设置, 它们会改变 MyBatis 的运行时行为-->
+    <settings>
+        <!--映射器是否配置缓存 默认是-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--延迟加载的全局开关 默认否-->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!--是否允许单一语句返回多结果集-->
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <!--使用列标签代替列名-->
+        <setting name="useColumnLabel" value="true"/>
+        <!--允许jdbc支持自动生成主键,需要驱动兼容-->
+        <setting name="useGeneratedKeys" value="false"/>
+        <!--指定mybatis应如何自动映射列到字段或属性-->
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!--指定发现自动映射目标未知列(或者未知属性类型)的行为-->
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <!--配置默认的执行器-->
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <!--设置超时时间,它决定驱动等待数据库响应的秒数-->
+        <setting name="defaultStatementTimeout" value="25"/>
+        <!--为驱动的结果集获取数量fetchSize设置一个提示值-->
+        <setting name="defaultFetchSize" value="100"/>
+        <!--允许在嵌套语句中使用分页RowBounds, 如果允许使用则设置为false-->
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <!--是否开启自动驼峰命名规则(camel case)映射-->
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <!--mybatis利用本地缓存机制(Local Cache)防止循环引用(circular references)和加速重复嵌套查询-->
+        <setting name="localCacheScope" value="SESSION"/>
+        <!--当没有为参数提供特定的jdbc类型时, 为空值指定jdbc类型-->
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <!--指定哪个对象的方法触发一次延迟加载-->
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+
+    <!--3. 为类添加小名-->
+    <typeAliases>
+        <typeAlias type="java.util.Map" alias="map"/>
+        <!--也可以指定包, 不使用@Alias注解指出时, 会自动取类名小写-->
+        <package name="org.ko.ibatis.domain"/>
+    </typeAliases>
+
+    <!--4. 添加类型转换器-->
+    <typeHandlers>
+        <typeHandler handler="org.ko.ibatis.handler.JsonTypeHandler"/>
+    </typeHandlers>
+
+    <!--5. 返回时对象创建工厂-->
+    <objectFactory type="org.ko.ibatis.factory.ResultFactory"/>
+
+    <!--6. mybatis plugin 拦截器-->
+    <plugins>
+        <plugin interceptor="org.ko.ibatis.plugin.SupportPlugin"/>
+    </plugins>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mappers/EmployeeMapper.xml"/>
+    </mappers>
+</configuration>

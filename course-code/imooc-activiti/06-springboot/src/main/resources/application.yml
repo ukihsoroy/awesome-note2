@@ -1,0 +1,3 @@
+spring:
+  activiti:
+    history-level: full

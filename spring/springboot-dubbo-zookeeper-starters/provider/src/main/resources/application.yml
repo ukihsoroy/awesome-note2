@@ -1,0 +1,13 @@
+server:
+  port: 8080  #指定端口号为8080 区分端口
+
+spring:
+  application:
+    name: dubbo-rpc
+  dubbo:
+    application.name: provider     #Dubbo服务名称
+    registry.address: zookeeper://127.0.0.1:2181 #Zookeeper地址
+    protocol:
+      name: dubbo                  #使用Dubbo 自定义协议
+      port: 20880                  #将Dubbo服务发布到20880端口
+    scan: org.ko.rpc               #自动扫描Dubbo自定注解

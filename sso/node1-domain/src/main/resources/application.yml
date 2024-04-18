@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: sso-domain #spring boot 快速启动
+  thymeleaf:
+    cache: true                     # 模版是否缓存.
+    check-template-location: true   # 检查模板位置是否存在.
+    content-type: text/html         # 页面类型.
+    enabled: true                   # 启用MVC Thymeleaf视图.
+    encoding: UTF-8                 # 模板编码.
+    mode: HTML5                     # 使用的模版类型, @See StandardTemplateModeHandlers.
+    prefix: classpath:/templates/   # 构建URL时, 前缀.
+    suffix: .html                   # 构建URL时, 后缀.
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8082  #端口号

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计划编辑页面</title>
+    <link rel="stylesheet" href="/node_modules/._element-ui@2.3.2@element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="_plan">
+        <el-form :model="form" :rules="rules" ref="form" label-width="120px">
+            <el-form-item label="计划编码" prop="planCode">
+                <el-col :span="8"><el-input v-model="form.planCode" placeholder="请填写计划编码"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="计划名称" prop="planName">
+                <el-col :span="8"><el-input v-model="form.planName" placeholder="请填写计划名称"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="计划提交时间" prop="submitDt">
+                <el-date-picker
+                        v-model="form.submitDt"
+                        type="datetime"
+                        placeholder="选择计划提交时间"
+                        format="yyyy年MM月dd日 HH点mm分ss秒"
+                        value-format="yyyy-MM-dd HH:mm:ss"
+                        align="right"
+                        style="width: 20%">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item label="提交人" prop="submitUser">
+                <el-col :span="8"><el-input v-model="form.submitUser" placeholder="请填写提交人"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="计划状态" prop="planStatus">
+                <el-col :span="8">
+                    <template>
+                        <el-select v-model="form.planStatus" placeholder="请选择计划状态">
+                            <!--1-待提交#SUBMIT, 2-待开始#START, 3-进行中#UNDER_WAY, 4-结束#OVER-->
+                            <el-option key="1" label="待提交" value="1"></el-option>
+                            <el-option key="2" label="待开始" value="2"></el-option>
+                            <el-option key="3" label="进行中" value="3"></el-option>
+                            <el-option key="4" label="结束" value="4"></el-option>
+                        </el-select>
+                    </template>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="逻辑删除" prop="deleteI">
+                <el-radio-group v-model="form.deleteI">
+                    <el-radio label="Y">是</el-radio>
+                    <el-radio label="N">否</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="版本号" prop="versionN">
+                <el-col :span="8"><el-input v-model="form.versionN" placeholder="请填写版本号"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="创建人" prop="createUserId">
+                <el-col :span="8"><el-input v-model="form.createUserId" placeholder="请填写版本号"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="创建时间" prop="createDt">
+                <el-date-picker
+                        v-model="form.createDt"
+                        type="datetime"
+                        placeholder="选择计划提交时间"
+                        format="yyyy年MM月dd日 HH点mm分ss秒"
+                        value-format="yyyy-MM-dd HH:mm:ss"
+                        align="right"
+                        style="width: 20%">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item label="更新人" prop="modifyUserId">
+                <el-col :span="8"><el-input v-model="form.modifyUserId" placeholder="请填写版本号"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="更新时间" prop="modifyDt">
+                <el-date-picker
+                        v-model="form.modifyDt"
+                        type="datetime"
+                        placeholder="选择计划提交时间"
+                        format="yyyy年MM月dd日 HH点mm分ss秒"
+                        value-format="yyyy-MM-dd HH:mm:ss"
+                        align="right"
+                        style="width: 20%">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submit('form')">立即创建</el-button>
+                <el-button @click="reset('form')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+
+    <!-- -----------表单样例------------
+    <div id="_form">
+        <el-form :model="form" :rules="rules" ref="form" label-width="100px">
+            <el-form-item label="活动名称" prop="name">
+                <el-col :span="8"><el-input v-model="form.name"></el-input></el-col>
+            </el-form-item>
+            <el-form-item label="活动区域" prop="region">
+                <el-select v-model="form.region" placeholder="请选择活动区域">
+                    <el-option label="区域一" value="shanghai"></el-option>
+                    <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="活动时间" required>
+                <el-col :span="4">
+                    <el-form-item prop="date">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 100%;"></el-date-picker>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="4">
+                    <el-form-item prop="time">
+                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.time" style="width: 100%;"></el-time-picker>
+                    </el-form-item>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="即时配送" prop="delivery">
+                <el-switch v-model="form.delivery"></el-switch>
+            </el-form-item>
+            <el-form-item label="活动性质" prop="type">
+                <el-checkbox-group v-model="form.type">
+                    <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
+                    <el-checkbox label="地推活动" name="type"></el-checkbox>
+                    <el-checkbox label="线下主题活动" name="type"></el-checkbox>
+                    <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+            <el-form-item label="特殊资源" prop="resource">
+                <el-radio-group v-model="form.resource">
+                    <el-radio label="线上品牌商赞助"></el-radio>
+                    <el-radio label="线下场地免费"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="活动形式" prop="desc">
+                <el-col :span="8"><el-input type="textarea" v-model="form.desc"></el-input></el-col>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('form')">立即创建</el-button>
+                <el-button @click="resetForm('form')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+    -->
+    <script src="/lib/vue.min.js"></script>
+    <script src="/lib/vue-resource.min.js"></script>
+    <script src="/node_modules/._element-ui@2.3.2@element-ui/lib/index.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/plan/edit.js"></script>
+</body>
+</html>

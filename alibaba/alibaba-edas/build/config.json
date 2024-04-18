@@ -1,0 +1,24 @@
+{
+    "edas": {
+        "host": "edas.console.aliyun.com",
+        "port": 80
+    },
+    "apps": [
+        {
+            "appName": "jenkins-consumer",
+            "appId": "b8ce22a3-4554-4385-bb89-f43848eedea1",
+            "userId": "xxxxxx@aliyun-test.com",
+            "target": "edas-demo-portal/target/portal.war",
+            "deployGroupId":"all",
+            "batch":1
+        },
+        {
+            "appName": "jenkins-provider",
+            "appId": "faf4ffb1-91a7-42bf-9ea1-4a764106695d",
+            "userId": "xxxxxx@aliyun-test.com",
+            "target": "edas-demo-service/target/service.war",
+            "deployGroupId":"all",
+            "batch":1
+        }
+    ]
+}
