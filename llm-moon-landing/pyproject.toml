@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "llm-moon-landing"
+version = "0.1.0"
+description = ""
+authors = ["ko <ko.shen@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.2"
+jsons = "^1.6.3"
+pandas = "^2.2.2"
+transformers = "^4.41.0"
+tensorflow = "^2.16.1"
+torch = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
