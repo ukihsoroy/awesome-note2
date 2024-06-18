@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/   #设置MVC视图解析前缀
+      suffix: .jsp            #设置MVC视图解析后缀-支持JSP解析
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8080  #端口号
+

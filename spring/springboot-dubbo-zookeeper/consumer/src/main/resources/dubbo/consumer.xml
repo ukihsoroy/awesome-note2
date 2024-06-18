@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--服务的超时时间 30秒-->
+    <dubbo:consumer timeout="30000"/>
+
+    <!--引用外部接口, interface本地接口, url服务方的地址-接口全名称, 调用服务的版本version要保持一致-->
+    <dubbo:reference
+            id="userService"
+            interface="org.ko.api.UserService"
+            version="1.0.0"/>
+</beans>

@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+#dubbo config
+spring.dubbo:
+  application.name: course-edge-service
+  registry.address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20880
+    host: 127.0.0.1
+  scan: com.imooc.course

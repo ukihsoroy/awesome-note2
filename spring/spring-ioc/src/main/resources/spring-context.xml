@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置Bean-->
+    <bean id="helloTest" class="org.ko.spring.HelloTest"/>
+
+    <!--Set方式传入-->
+    <bean id="propertyTest" class="org.ko.spring.PropertyTest">
+        <property name="name" value="K.O"/>
+        <property name="age" value="27"/>
+    </bean>
+
+    <!--构造函数方式初始化-->
+    <bean id="constructorTest" class="org.ko.spring.ConstructorTest">
+        <constructor-arg name="name" value="K.O"></constructor-arg>
+        <constructor-arg name="age" value="27"></constructor-arg>
+    </bean>
+
+</beans>

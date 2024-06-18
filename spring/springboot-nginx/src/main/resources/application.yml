@@ -1,0 +1,10 @@
+server:
+  port: 8081
+  servlet-path: /rest
+mybatis:
+  mapper-locations: mappers/*
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+
+

@@ -1,0 +1,34 @@
+{
+    "edas": {
+        "host": "edas.console.aliyun.com",
+        "port": 80
+    },
+    "apps": [
+       {
+            "appName": "doc-jenkins-consumer",
+            "appId": "6e941be8-8c9e-4cb9-9ac8-6b3263e99173",
+            "userId": "xxxxxx@aliyun-test.com",
+            "target": "edas-demo-portal/target/portal.war",
+            "type": "upload",
+            "deployToStr": "all",
+            "packageVersion":"1.3",
+            "description": "",
+            "imageUrl":"",
+            "regionId":"cn-hangzhou",
+            "batch":1
+        },
+        {
+            "appName": "doc-jenkins-provider",
+            "appId": "9b670366-9ba0-4336-88da-1d8a9bad5773",
+            "userId": "xxxxxx@aliyun-test.com",
+            "target": "edas-demo-service/target/service.war",
+            "type": "image",
+            "deployToStr": "all",
+            "packageVersion":"1.3",
+            "description": "",
+            "imageUrl":"registry.cn-hangzhou.aliyuncs.com/edas_test1/onenight:1",
+            "regionId":"cn-hangzhou",
+            "batch":1
+        }
+    ]
+}

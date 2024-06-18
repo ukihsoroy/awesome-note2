@@ -1,0 +1,16 @@
+server:
+  port: 8080 # 配置应用启动端口
+mybatis:
+  type-aliases-package: org.ko.mybatis # mybatis 类小名 从全classpath -> classname
+  mapper-locations: classpath:mappers/*.xml # mybatis xml 加载
+  configuration:
+    map-underscore-to-camel-case: true # 下划线转驼峰
+
+spring:
+  config:
+    name: mybatis-example # 应用名称
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 驱动
+    username: root # 用户名
+    password: tiger # 密码
+    url: jdbc:mysql:///mybatis?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8

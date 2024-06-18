@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spring-boot #spring boot 快速启动
+
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+
+user:
+  name: K.O
+  gender: man
+  blog: http://blog.csdn.net/artisters
+  hobby: coding
+
+  #springboot 配置文件中封装了random对象

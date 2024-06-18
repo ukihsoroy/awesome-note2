@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--开启默认的拦截器-->
+    <http auto-config='true'>
+        <!--允许访问的uri-->
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+    </http>
+
+    <!--权限管理者-->
+    <authentication-manager>
+        <!--权限提供者-->
+        <authentication-provider>
+            <!--可提供登陆访问的用户-->
+            <user-service>
+                <user name="admin" password="123456" authorities="ROLE_USER, ROLE_ADMIN"/>
+                <user name="user" password="123456" authorities="ROLE_USER"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.ko</groupId>
+  <artifactId>spring-webmvc-simple</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>spring-webmvc-simple</name>
+  <url>http://maven.apache.org</url>
+
+  <modules>
+    <module>simple-mvc-node1</module>
+  </modules>
+
+  <dependencies>
+    <!--Junit5 Jupiter API-->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.1.0-M1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--Servlet API-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>Chapter1-simple</finalName>
+  </build>
+</project>

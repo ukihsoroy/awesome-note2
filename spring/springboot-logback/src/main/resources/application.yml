@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8081  #端口号
+

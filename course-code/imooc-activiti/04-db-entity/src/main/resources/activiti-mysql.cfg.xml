@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+        <!--是否更新表等等-->
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="dataSource" ref="datasource"/>
+
+        <!--去掉历史和用户-->
+        <property name="dbHistoryUsed" value="true"/>
+        <property name="dbIdentityUsed" value="true"/>
+
+        <!--开启History日志最高级别为full-->
+        <property name="historyLevel" value="FULL"/>
+        <!--开启数据库event log-->
+        <property name="enableDatabaseEventLogging" value="true"/>
+    </bean>
+
+    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti6unit?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="tiger"/>
+        <property name="initialSize" value="1"/>
+        <property name="maxActive" value="10"/>
+        <property name="filters" value="stat,slf4j"/>
+    </bean>
+
+</beans>

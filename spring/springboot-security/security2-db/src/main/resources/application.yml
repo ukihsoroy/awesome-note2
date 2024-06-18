@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql:///art-prototype?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    driver-class-name: org.mariadb.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    username: ko
+    password: tiger
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true   #开启驼峰命名转换

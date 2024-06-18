@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: course-dubbo-service
+  dubbo:
+    application.name: course-dubbo-service
+    registry.address: zookeeper://127.0.0.1:2181
+    protocol:
+      name: dubbo
+      port: 20880
+      host: 127.0.0.1
+    scan: com.imooc.course
+
+thrift:
+  user:
+    ip: 127.0.0.1
+    port: 7911

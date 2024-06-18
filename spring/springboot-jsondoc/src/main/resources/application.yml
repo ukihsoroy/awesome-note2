@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8080  #端口号
+
+jsondoc:  #JSONDoc配置
+  version: 1.0  #生成JSONDoc版本号
+  base-path: http://localhost:${server.port}      #访问根url
+  packages: [org.ko.web.entity, org.ko.web.rest]  #配置扫描包
+  playground-enabled: true
+  display-method-as: summary
+
+

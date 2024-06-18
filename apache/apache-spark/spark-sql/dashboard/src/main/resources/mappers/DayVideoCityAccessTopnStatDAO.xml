@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ko.dashboard.dao.DayVideoCityAccessTopnStatDAO">
+  <resultMap id="BaseResultMap" type="org.ko.dashboard.domain.DayVideoCityAccessTopnStat">
+    <id column="day" jdbcType="VARCHAR" property="day" />
+    <id column="cms_id" jdbcType="BIGINT" property="cmsId" />
+    <id column="city" jdbcType="VARCHAR" property="city" />
+    <result column="times" jdbcType="BIGINT" property="times" />
+    <result column="times_rank" jdbcType="SMALLINT" property="timesRank" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    `day`, cms_id, city, times, times_rank
+  </sql>
+  <select id="selectByExample" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStatExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_day_video_city_access_topn_stat
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStatKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_day_video_city_access_topn_stat
+    where `day` = #{day,jdbcType=VARCHAR}
+      and cms_id = #{cmsId,jdbcType=BIGINT}
+      and city = #{city,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStatKey">
+    delete from t_day_video_city_access_topn_stat
+    where `day` = #{day,jdbcType=VARCHAR}
+      and cms_id = #{cmsId,jdbcType=BIGINT}
+      and city = #{city,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStatExample">
+    delete from t_day_video_city_access_topn_stat
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStat">
+    insert into t_day_video_city_access_topn_stat (`day`, cms_id, city, 
+      times, times_rank)
+    values (#{day,jdbcType=VARCHAR}, #{cmsId,jdbcType=BIGINT}, #{city,jdbcType=VARCHAR}, 
+      #{times,jdbcType=BIGINT}, #{timesRank,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStat">
+    insert into t_day_video_city_access_topn_stat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="day != null">
+        `day`,
+      </if>
+      <if test="cmsId != null">
+        cms_id,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="timesRank != null">
+        times_rank,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="day != null">
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="cmsId != null">
+        #{cmsId,jdbcType=BIGINT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=BIGINT},
+      </if>
+      <if test="timesRank != null">
+        #{timesRank,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStatExample" resultType="java.lang.Long">
+    select count(*) from t_day_video_city_access_topn_stat
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_day_video_city_access_topn_stat
+    <set>
+      <if test="record.day != null">
+        `day` = #{record.day,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cmsId != null">
+        cms_id = #{record.cmsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.times != null">
+        times = #{record.times,jdbcType=BIGINT},
+      </if>
+      <if test="record.timesRank != null">
+        times_rank = #{record.timesRank,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_day_video_city_access_topn_stat
+    set `day` = #{record.day,jdbcType=VARCHAR},
+      cms_id = #{record.cmsId,jdbcType=BIGINT},
+      city = #{record.city,jdbcType=VARCHAR},
+      times = #{record.times,jdbcType=BIGINT},
+      times_rank = #{record.timesRank,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStat">
+    update t_day_video_city_access_topn_stat
+    <set>
+      <if test="times != null">
+        times = #{times,jdbcType=BIGINT},
+      </if>
+      <if test="timesRank != null">
+        times_rank = #{timesRank,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where `day` = #{day,jdbcType=VARCHAR}
+      and cms_id = #{cmsId,jdbcType=BIGINT}
+      and city = #{city,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ko.dashboard.domain.DayVideoCityAccessTopnStat">
+    update t_day_video_city_access_topn_stat
+    set times = #{times,jdbcType=BIGINT},
+      times_rank = #{timesRank,jdbcType=SMALLINT}
+    where `day` = #{day,jdbcType=VARCHAR}
+      and cms_id = #{cmsId,jdbcType=BIGINT}
+      and city = #{city,jdbcType=VARCHAR}
+  </update>
+  <select id="findCityTimes" parameterType="string" resultType="org.ko.dashboard.domain.CityTimes">
+    SELECT
+      t.city name,
+      SUM(t.times) value
+    FROM t_day_video_city_access_topn_stat t
+    WHERE day = #{day}
+    GROUP BY t.city;
+  </select>
+</mapper>

@@ -1,0 +1,14 @@
+# datasource
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///artist?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: ko
+    password: tiger
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:activiti
+#    username: ko
+#    password:
+
+server:
+  port: 8081

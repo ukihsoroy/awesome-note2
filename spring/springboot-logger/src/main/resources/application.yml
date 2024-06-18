@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+  output.ansi.enabled: DETECT
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8080  #端口号
+
+# 默认logger配置
+debug: true
+# 输出的文件位置
+logging.file: ko.log      # 输出在项目目录
+#logging.path:            # 输出文件位置与logging.file二选一, 以logging.file为主
+logging.level.*: DEBUG    # 日志隔离级别
+

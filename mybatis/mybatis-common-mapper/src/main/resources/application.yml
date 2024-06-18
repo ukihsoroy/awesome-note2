@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    schema: import.sql #h2数据库初始化sql
+mybatis:
+  mapper-locations: classpath:mappers/*.xml #mapper xml path
+  type-aliases-package: org.ko.mybatis.domain #开启mybatis alias
+  configuration:
+    map-underscore-to-camel-case: true #开启自动下划线转驼峰
+
+mapper:
+  not-empty: true #
+  before: true #
+  mappers: tk.mybatis.mapper.common.Mapper #配置的mapper

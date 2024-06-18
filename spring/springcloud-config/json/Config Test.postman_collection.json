@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Config Test",
+		"_postman_id": "c68e1455-cecb-9033-4980-ac64665eb5c9",
+		"description": "Spring cloud config test case.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.Services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8083/services",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "1.Get Compute Config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8082/user/dev",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "2.Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8083/services/data",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "3.Chang Local Properties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "4.Get Compute Config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8082/user/dev",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "5.Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8083/services/data",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "6.Refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": "localhost:8083/refresh",
+				"description": "test client."
+			},
+			"response": []
+		},
+		{
+			"name": "7.Get Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "localhost:8083/services/data",
+				"description": "test client."
+			},
+			"response": []
+		}
+	]
+}

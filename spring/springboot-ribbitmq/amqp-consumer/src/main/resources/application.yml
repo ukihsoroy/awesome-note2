@@ -1,0 +1,11 @@
+server:
+  port: 8082  #应用端口号
+
+spring:
+  application:
+    name: amqp-consumer #应用名称
+  rabbitmq:
+    host: localhost #RabbitMQ 地址
+    port: 5672  #监听端口号
+    username: tiger #用户名
+    password: 123456  #密码

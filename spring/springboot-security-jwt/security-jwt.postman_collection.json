@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "ca9d51f3-a5f2-4e39-aea6-46603ccf55b6",
+		"name": "security-jwt",
+		"description": "spring boot security jwt 鉴权测试.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "注册用户",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": "http://localhost:8080/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "登录获取token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"admin\", \"password\": \"123456\",\"rememberMe\":true}"
+				},
+				"url": "http://localhost:8080/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "携带token获取资源",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJST0xFX0RFVixST0xFX1BNIiwiaXNzIjoiU25haWxDbGltYiIsImlhdCI6MTU3NjM5NjQ2Nywic3ViIjoiYWRtaW4iLCJleHAiOjE1NzcwMDEyNjd9.KTDZkf_L2VH9P7vtDmeG5RhNWp92nw2U6W9agMErLNg",
+						"disabled": false
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/users?pageNum=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "pageNum",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

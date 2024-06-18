@@ -1,0 +1,23 @@
+#Spring 配置
+spring:
+  application:
+    name: spring-boot #spring boot 快速启动
+  datasource:
+    url: jdbc:mysql://localhost:3306/artist     #数据库URL
+    username: ko                                #数据库登录名
+    password: tiger                             #数据库登录密码
+    driver-class-name: com.mysql.jdbc.Driver    #数据库驱动
+
+#MyBatis配置
+mybatis:
+  typeAliasesPackage: org.ko.web.dao.domain #小名
+  mapperLocations: classpath:mappers/*.xml  #mapper扫描
+  configuration:
+    mapUnderscoreToCamelCase: true #开始下划线转驼峰
+
+#服务配置
+server:
+  session:
+    timeout: 3600 #session 超时时间 (秒)
+  port: 8080  #端口号
+
