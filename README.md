@@ -1,8 +1,8 @@
-# Tutorials
+# awesome-note2
 
 ## 前言
 
-`Tutorials`: 项目创建于2017年8月20日, 是个人学习框架和工具的合集, 欢迎fork or star!
+`awesome-note2`: 项目创建于2017年8月20日, 是个人学习框架和工具的合集, 欢迎fork or star!
 
 ## 项目介绍
 
@@ -24,7 +24,7 @@
 
 - id-generator: id生成器
 
-### web
+### java&web&spring 及一些中间件
 
 - `apache-mina`: Apache NIO框架
 - `apache-poi`: Excel, Word, PPT 导入导出
@@ -108,5 +108,9 @@
 - `numpy`: numpy练习，学习
 - `pygames`: python game游戏玩耍
 - `spider`: python爬虫基础，数据抓取等
+
+### golang 生态
+
+- `gin-starter`：gin 脚手架简单学习
 
 
