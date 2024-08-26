@@ -13,6 +13,8 @@ pandas = "^2.2.2"
 transformers = "^4.41.0"
 tensorflow = "^2.16.1"
 torch = "^2.3.0"
+langchain = "^0.2.14"
+langchain_community = "^0.2.12"
 
 
 [build-system]
