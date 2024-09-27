@@ -30,3 +30,7 @@ node_modules/
 venv/
 *.pyc
 .ipynb_checkpoints/
+
+### llm ###
+.safetensors
+flagAlpha/
